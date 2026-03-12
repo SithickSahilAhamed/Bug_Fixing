@@ -48,5 +48,15 @@
     "id": 10,
     "username": "soun",
     "password": "8e7ac6c5378d3ca32ea2aa86b44f0302d477c1055462e81fc3902cd3fe7855da"
+  },
+  {
+    "id": 11,
+    "username": "someone",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+  },
+  {
+    "id": 12,
+    "username": "tester12",
+    "password": "8bb0cf6eb9b17d0f7d22b456f121257dc1254e1f01665370476383ea776df414"
   }
 ]

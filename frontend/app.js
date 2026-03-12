@@ -36,7 +36,7 @@ async function register(){
     if (data.error) {
       alert(data.error)
     } else {
-      alert("registered! Please login.")
+      alert("registered")
       window.location.href="login.html"
     }
   } catch (e) {
@@ -107,23 +107,6 @@ async function fetchNotes() {
   }
 }
 
-async function deleteNote(id) {
-  const token = localStorage.getItem("token")
-  try {
-    const res = await fetch(`${API_BASE}/notes/${id}`, {
-      method: "DELETE",
-      headers: { "Authorization": token }
-    })
-    const data = await res.json()
-    if(data.error) {
-      alert(data.error)
-    } else {
-      fetchNotes()
-    }
-  } catch(e) {
-    console.error(e)
-  }
-}
 
 function logout() {
   localStorage.removeItem("token")
