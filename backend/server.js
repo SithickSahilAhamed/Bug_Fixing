@@ -4,12 +4,30 @@ const app=express()
 const authRoutes=require("../routes/auth")
 const noteRoutes=require("../routes/notes")
 
-app.use(express.json())
-app.use(express.static("frontend"))
+// CHANGE #19 - Architecture Change: Backend moved to port 5000
+// Frontend runs separately on port 3000 via frontendServer.js
+// This separates the two concerns and enables independent scaling
 
+// CHANGE #20 - Security Feature: CORS middleware added
+// Allows requests from the frontend at localhost:3000 to reach the API at localhost:5000
+// Without this, the browser would block all cross-origin API calls
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000")
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
+  // Handle pre-flight OPTIONS requests from the browser
+  if (req.method === "OPTIONS") {
+    return res.status(200).end()
+  }
+  next()
+})
+
+app.use(express.json())
+
+// CHANGE #19 (continued): static frontend serving removed — handled by frontendServer.js
 app.use("/auth",authRoutes)
 app.use("/notes",noteRoutes)
 
-app.listen(3000,()=>{
-console.log("Server running on port 3000")
+app.listen(5000,()=>{
+console.log("Backend API running on port 5000")
 })

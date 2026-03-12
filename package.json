@@ -1,0 +1,27 @@
+{
+  "name": "secure-notes-manager",
+  "version": "1.0.0",
+  "description": "A full stack debugging challenge built using:",
+  "main": "index.js",
+  "scripts": {
+    "backend": "node backend/server.js",
+    "frontend": "node frontendServer.js",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balajihack21/secure-notes-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/balajihack21/secure-notes-manager/issues"
+  },
+  "homepage": "https://github.com/balajihack21/secure-notes-manager#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
