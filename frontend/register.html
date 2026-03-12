@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html>
-<head><title>Register</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create your Secure Notes Manager account.">
+  <title>Register – Secure Notes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<h2>Register</h2>
-<input id="username" placeholder="username">
-<input id="password" placeholder="password">
-<button onclick="register()">Register</button>
-<script src="app.js"></script>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <div class="auth-icon">✨</div>
+      <h1 class="auth-title">Create account</h1>
+      <p class="auth-subtitle">Your notes deserve serious protection</p>
+
+      <div class="form-group">
+        <label class="form-label" for="username">Username</label>
+        <input id="username" type="text" placeholder="Pick a username" autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input id="password" type="password" placeholder="Create a strong password" autocomplete="new-password">
+      </div>
+
+      <button onclick="register()" id="btn-register">🚀 Get Started</button>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+
+    </div>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
