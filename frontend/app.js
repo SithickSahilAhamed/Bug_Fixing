@@ -94,19 +94,42 @@ async function fetchNotes() {
     
     const notesDiv = document.getElementById("notes")
     if(notesDiv) {
-      notesDiv.innerHTML = notes.map(n => `
-        <div style="border:1px solid #ccc; padding:10px; margin: 10px 0;">
+      notesDiv.innerHTML = notes.length === 0
+        ? `<div class="empty-state">
+             <span class="empty-state-icon">📭</span>
+             <p class="empty-state-text">No notes yet — add your first one above!</p>
+           </div>`
+        : notes.map(n =>
+        `<div>
           <h3>${n.title}</h3>
           <p>${n.content}</p>
-          <button onclick="deleteNote(${n.id})">Delete</button>
-        </div>
-      `).join('')
+          <button onclick="deleteNote(${n.id})">🗑️ Delete</button>
+        </div>`
+      ).join('')
     }
   } catch(e) {
     console.error(e)
   }
 }
 
+
+async function deleteNote(id) {
+  const token = localStorage.getItem("token")
+  try {
+    const res = await fetch(`${API_BASE}/notes/${id}`, {
+      method: "DELETE",
+      headers: { "Authorization": token }
+    })
+    const data = await res.json()
+    if (data.error) {
+      alert(data.error)
+    } else {
+      fetchNotes()
+    }
+  } catch(e) {
+    console.error("Delete error", e)
+  }
+}
 
 function logout() {
   localStorage.removeItem("token")

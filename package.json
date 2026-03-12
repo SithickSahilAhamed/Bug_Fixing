@@ -6,6 +6,7 @@
   "scripts": {
     "backend": "node backend/server.js",
     "frontend": "node frontendServer.js",
+    "dev": "concurrently \"node backend/server.js\" \"node frontendServer.js\"",
     "start": "node backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +24,8 @@
   "homepage": "https://github.com/balajihack21/secure-notes-manager#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
